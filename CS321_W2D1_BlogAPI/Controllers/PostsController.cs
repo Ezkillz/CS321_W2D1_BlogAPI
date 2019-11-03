@@ -39,7 +39,7 @@ namespace CS321_W2D1_BlogAPI.Controllers
         {
             // look up post by id
             // TODO: use _postsService to get post by id
-            var post = _postService.Get(Id);
+            var post = _postService.Get(id);
             // if not found, return 404 NotFound 
             if (post == null) return NotFound();
 
@@ -67,7 +67,7 @@ namespace CS321_W2D1_BlogAPI.Controllers
         {
             Post post;
             // TODO: use _postService to update post. store returned Post in the post variable.
-            Post post = _postService.Get(id);
+            post = _postService.Get(id);
             if (post == null) return NotFound();
             return Ok(_postService.Update(updatedPost));
         }

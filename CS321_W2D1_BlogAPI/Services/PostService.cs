@@ -32,7 +32,7 @@ namespace CS321_W2D1_BlogAPI.Services
             post.Id = _nextId++;
             // store in the list of Posts
             // TODO: add the new post to the list of posts (_posts)
-            _posts.add;
+            _posts.Add(post);
             // return the new Post with Id filled in
             return post;
         }
@@ -41,12 +41,14 @@ namespace CS321_W2D1_BlogAPI.Services
         {
             // return the specified Post or null if not found
             // TODO: use FirstOrDefault() to find the Post by id in _posts and return it
+            Post TheTing = _posts.FirstOrDefault(p => p.Id == id);
+            return TheTing;
         }
 
         public IEnumerable<Post> GetAll()
         {
             // TODO: return the full list of posts
-            return Post;
+            return _posts;
         }
 
         public Post Update(Post updatedPost)
@@ -57,7 +59,7 @@ namespace CS321_W2D1_BlogAPI.Services
             //var currentPost = this.Get(updatedPost.Id);
             // return null if the Post to update isn't found
             if (currentPost == null) return null;
-            currentPost.Title = updatedPost.Tite;
+            currentPost.Title = updatedPost.Title;
             currentPost.Body = updatedPost.Body;
             // copy the property values from the updated post into the current post object
             // TODO: copy the values in updatedPost to the post you found in the list
@@ -68,7 +70,7 @@ namespace CS321_W2D1_BlogAPI.Services
         public void Remove(Post post)
         {
             // TODO: remove the post from _posts
-            var currentPost = _posts.FirstOrDefault(p => p.Id == Post.Id);
+            var currentPost = _posts.FirstOrDefault(p => p.Id == post.Id);
             if (currentPost != null)
             {
                 _posts.Remove(currentPost);
